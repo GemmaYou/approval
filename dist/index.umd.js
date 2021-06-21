@@ -231,8 +231,7 @@
         this.element = element; // 覆寫定義好的預設值
 
         this.options = assign({}, DEFAULTS, $.isPlainObject(options) && options);
-        this.data = [];
-        this.dialog; // 初始化
+        this.data = []; // 初始化
 
         this.init(this.options);
       }
@@ -307,13 +306,6 @@
         ele.append(actGroup); // resize middle
 
         if (data.length <= self.options.perItem) actGroup.width(`${264 * data.length + 50}px`);
-
-        if (self.element) {
-          console.log('true');
-        } else {
-          console.log('false');
-        }
-
         if (self.element) $(self.element).append(ele);
         return ele;
       }
