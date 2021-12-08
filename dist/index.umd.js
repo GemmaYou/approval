@@ -42,43 +42,43 @@
       let data;
 
       switch (status) {
-        case 'pending':
+        case "pending":
           data = {
             actNumber: $(`<div class="act-number pending">${key}</div>`),
             actBref: $(`<div class="act-bref pending"></div>`),
-            status: $(`<div class="status">處理中</div>`)
+            status: $(`<div class="approvalStatus">處理中</div>`)
           };
           break;
 
-        case 'approved':
+        case "approved":
           data = {
             actNumber: $(`<div class="act-number approved">&#10003</div>`),
             actBref: $(`<div class="act-bref approved"></div>`),
-            status: $(`<div class="status">審核通過</div>`)
+            status: $(`<div class="approvalStatus">審核通過</div>`)
           };
           break;
 
-        case 'rejected':
+        case "rejected":
           data = {
             actNumber: $(`<div class="act-number rejected">X</div>`),
             actBref: $(`<div class="act-bref rejected"></div>`),
-            status: $(`<div class="status">不通過</div>`)
+            status: $(`<div class="approvalStatus">不通過</div>`)
           };
           break;
 
-        case 'queueing':
+        case "queueing":
           data = {
             actNumber: $(`<div class="act-number queueing">${key}</div>`),
             actBref: $(`<div class="act-bref queueing"></div>`),
-            status: $(`<div class="status">待處理</div>`)
+            status: $(`<div class="approvalStatus">待處理</div>`)
           };
           break;
 
-        case 'start':
+        case "start":
           data = {
             actNumber: $(`<div class="act-number start">${key}</div>`),
             actBref: $(`<div class="act-bref start"></div>`),
-            status: $(`<div class="status">送出申請</div>`)
+            status: $(`<div class="approvalStatus">送出申請</div>`)
           };
           break;
       }
@@ -267,8 +267,8 @@
             addedBy.append(addedByP);
             addedByP.tooltip({
               animation: true,
-              placement: 'bottom',
-              trigger: 'hover',
+              placement: "bottom",
+              trigger: "hover",
               sanitize: false,
               title: item.added_by
             });
@@ -277,27 +277,25 @@
           if (item.added_remark) {
             let addedByI = $(`<i tabindex="0" class="far fa-comment-dots addedByToolTip"></i>`);
             addedByI.popover({
-              title: '加簽說明',
+              title: "加簽說明",
               content: item.added_remark,
               animation: true,
-              trigger: 'focus'
+              trigger: "focus"
             });
             addedBy.append(addedByI);
           }
 
-          let actTriangle = $(`<div class="act-triangle">${data.length > self.options.perItem ? "&#9666" : "&#9650"}</div>`);
           let approvalStatus = checkStatus(item.approval_status, key);
           let approverName = $(`<div class="approverName">${item.approver_name}</div>`);
           let approvalDate = $(`<div class="approvalDate">${item.approval_date}</div>`);
           let approverComment = $(`<div class="approverComment">${item.approver_comment}</div>`);
-          let attachments = $(`<div class="attachments">${item.attachments.length === 0 ? '' : `請參考附件 <i class="fas fa-paperclip"></i>`}</div>`);
+          let attachments = $(`<div class="attachments">${item.attachments.length === 0 ? "" : `請參考附件 <i class="fas fa-paperclip"></i>`}</div>`);
           approvalStatus.actBref.append(approvalStatus.status);
           approvalStatus.actBref.append(approverName);
           approvalStatus.actBref.append(approvalDate);
           approvalStatus.actBref.append(approverComment);
           approvalStatus.actBref.append(attachments);
           card.append(actMiddle);
-          card.append(actTriangle);
           card.append(approvalStatus.actNumber);
           card.append(approvalStatus.actBref);
           card.append(addedBy);
@@ -313,7 +311,7 @@
       openDialog() {
         const self = this;
         let data = self.createCardGroup(self.data);
-        let dialog = Nueip.bootstrapDialog('簽核', data);
+        let dialog = Nueip.bootstrapDialog("簽核", data);
         dialog.open();
       }
 

@@ -23,9 +23,10 @@ $white: #fff;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      background-color: $greyBackground;
+      // background-color: $greyBackground; //todo:delete
       position: relative;
       border-radius: 2px;
+      text-align: center; //todo: add
       .addedBy {
         font-size: 12px;
         position: relative;
@@ -149,7 +150,7 @@ $white: #fff;
       }
       .act-bref {
         padding: 10px 10px;
-        .approvalStatus {
+        .approvalStatus { //todo: classname and add color by status
           font-weight: bold;
           margin-bottom: 3px;
         }
@@ -217,6 +218,7 @@ $white: #fff;
           display: none;
         }
         .addedBy {
+          border-radius: 5px; //todo: add radius
           margin: 0 10px 10px;
           max-width: 180px;
           .addedRemark {
@@ -225,7 +227,8 @@ $white: #fff;
             }
           }
         }
-        .act-triangle {
+        .act-triangle { //todo: delete
+          display: none;
           top: -6px;
           left: -14px;
         }

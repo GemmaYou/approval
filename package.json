@@ -4,7 +4,7 @@
   "description": "Front-End Developer Training",
   "main": "app.js",
   "scripts": {
-    "build": "rollup -c rollup.config.js",
+    "build": "rollup -c rollup.config.js --watch",
     "serve": "node app.js",
     "start": "npm run build & npm run serve & open http://localhost:3000/public",
     "stop": "npx kill-port 3000",
@@ -18,11 +18,13 @@
     "@rollup/plugin-eslint": "^8.0.1",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "mockjs": "^1.1.0",
+    "node-sass": "^7.0.0",
     "rollup": "^2.48.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-replace": "^2.2.0"
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-scss": "^3.0.0"
   },
   "dependencies": {
     "axios": "^0.21.1",

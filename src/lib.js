@@ -4,19 +4,21 @@
  * @param {*} args - The rest objects for merging to the target object.
  * @returns {Object} The extended object.
  */
-export const assign = Object.assign || function assign ( target, ...args ) {
-  if ( $.isPlainObject( target ) && args.length > 0 ) {
-    args.forEach( ( arg ) => {
-      if ( $.isPlainObject( arg ) ) {
-        Object.keys( arg ).forEach( ( key ) => {
-          target[key] = arg[key];
-        } );
-      }
-    } );
-  }
+export const assign =
+  Object.assign ||
+  function assign(target, ...args) {
+    if ($.isPlainObject(target) && args.length > 0) {
+      args.forEach((arg) => {
+        if ($.isPlainObject(arg)) {
+          Object.keys(arg).forEach((key) => {
+            target[key] = arg[key];
+          });
+        }
+      });
+    }
 
-  return target;
-};
+    return target;
+  };
 
 /**
  * Extend object
@@ -24,44 +26,44 @@ export const assign = Object.assign || function assign ( target, ...args ) {
  * @param {Number} key - 簽核關卡
  * @returns {Object} data - 三項 element
  */
-export const checkStatus = function( status, key ) {
+export const checkStatus = function (status, key) {
   let data;
-  switch ( status ) {
-    case 'pending':
+  switch (status) {
+    case "pending":
       data = {
-        actNumber: $( `<div class="act-number pending">${key}</div>` ),
-        actBref: $( `<div class="act-bref pending"></div>` ),
-        status: $( `<div class="status">處理中</div>` ),
+        actNumber: $(`<div class="act-number pending">${key}</div>`),
+        actBref: $(`<div class="act-bref pending"></div>`),
+        status: $(`<div class="approvalStatus">處理中</div>`),
       };
       break;
-    case 'approved':
+    case "approved":
       data = {
-        actNumber: $( `<div class="act-number approved">&#10003</div>` ),
-        actBref: $( `<div class="act-bref approved"></div>` ),
-        status: $( `<div class="status">審核通過</div>` ),
+        actNumber: $(`<div class="act-number approved">&#10003</div>`),
+        actBref: $(`<div class="act-bref approved"></div>`),
+        status: $(`<div class="approvalStatus">審核通過</div>`),
       };
       break;
-    case 'rejected':
+    case "rejected":
       data = {
-        actNumber: $( `<div class="act-number rejected">X</div>` ),
-        actBref: $( `<div class="act-bref rejected"></div>` ),
-        status: $( `<div class="status">不通過</div>` ),
+        actNumber: $(`<div class="act-number rejected">X</div>`),
+        actBref: $(`<div class="act-bref rejected"></div>`),
+        status: $(`<div class="approvalStatus">不通過</div>`),
       };
       break;
-    case 'queueing':
+    case "queueing":
       data = {
-        actNumber: $( `<div class="act-number queueing">${key}</div>` ),
-        actBref: $( `<div class="act-bref queueing"></div>` ),
-        status: $( `<div class="status">待處理</div>` ),
+        actNumber: $(`<div class="act-number queueing">${key}</div>`),
+        actBref: $(`<div class="act-bref queueing"></div>`),
+        status: $(`<div class="approvalStatus">待處理</div>`),
       };
       break;
-    case 'start':
+    case "start":
       data = {
-        actNumber: $( `<div class="act-number start">${key}</div>` ),
-        actBref: $( `<div class="act-bref start"></div>` ),
-        status: $( `<div class="status">送出申請</div>` ),
+        actNumber: $(`<div class="act-number start">${key}</div>`),
+        actBref: $(`<div class="act-bref start"></div>`),
+        status: $(`<div class="approvalStatus">送出申請</div>`),
       };
       break;
   }
   return data;
-}
+};
